@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package role;
+
+message Role {
+  string id = 1;
+  string client_id = 2;
+  string name = 3;
+  string description = 4;
+  string created_at = 5;
+  string updated_at = 6;
+}
+
+message RoleList {
+  repeated Role role = 1;
+}

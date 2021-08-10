@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package auth;
+
+import "permission.proto";
+import "role.proto";
+import "user-role.proto";
+
+service IAM{
+  rpc CreatePermission(permission.Permission) returns (permission.Permission) {}
+  rpc GetPermission(permission.Permission) returns (permission.Permission) {}
+  rpc ListPermissions(permission.Permission) returns (permission.PermissionList) {}
+  rpc UpdatePermission(permission.Permission) returns (permission.Permission) {}
+  rpc DeletePermission(permission.Permission) returns (permission.Permission) {}
+
+  rpc CreateRole(role.Role) returns (role.Role) {}
+  rpc GetRole(role.Role) returns (role.Role) {}
+  rpc ListRoles(role.Role) returns (role.RoleList) {}
+  rpc UpdateRole(role.Role) returns (role.Role) {}
+  rpc DeleteRole(role.Role) returns (role.Role) {}
+
+  rpc CreateUserRole(user_role.UserRole) returns (user_role.UserRole) {}
+  rpc GetUserRole(user_role.UserRole) returns (user_role.UserRole) {}
+  rpc ListUserRoles(user_role.UserRole) returns (user_role.UserRoleList) {}
+  rpc UpdateUserRole(user_role.UserRole) returns (user_role.UserRole) {}
+  rpc DeleteUserRole(user_role.UserRole) returns (user_role.UserRole) {}
+}
+
+

@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package permission;
+
+message Permission {
+  string id = 1;
+  string client_id = 5;
+  string name = 2;
+  string description = 3;
+  string created_at = 6;
+  string updated_at = 7;
+}
+
+message PermissionList {
+  repeated Permission permission = 1;
+}
