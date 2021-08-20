@@ -15,6 +15,7 @@ model Permission {
   id          String   @id @default(cuid())
   role_id     String?
   project_id  String?
+  owner_id    String?
   name        String
   description String?
   created_at  DateTime @default(now())
@@ -28,7 +29,7 @@ model Permission {
 
 model Project {
   id          String   @id @default(cuid())
-  user_id     String?
+  owner_id    String?
   name        String
   description String?
   created_at  DateTime @default(now())
@@ -45,6 +46,7 @@ model Project {
 model Role {
   id          String   @id @default(cuid())
   project_id  String?
+  owner_id    String?
   name        String
   description String?
   created_at  DateTime @default(now())
@@ -62,6 +64,7 @@ model UserProject {
   id         String   @id @default(cuid())
   user_id    String?
   project_id String?
+  owner_id   String?
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 
@@ -75,6 +78,7 @@ model UserRole {
   user_id    String?
   role_id    String?
   project_id String?
+  owner_id   String?
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 
