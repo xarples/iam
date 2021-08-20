@@ -4,7 +4,7 @@ package role;
 
 message Role {
   string id = 1;
-  string client_id = 2;
+  string project_id = 2;
   string name = 3;
   string description = 4;
   string created_at = 5;

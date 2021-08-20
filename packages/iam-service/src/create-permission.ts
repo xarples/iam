@@ -1,6 +1,6 @@
 import * as db from '@xarples/iam-db'
-import { grpc, Permission } from '@xarples/iam-proto-loader'
-import { getPermissionMessage } from './utils'
+import { grpc, Permission } from '@xarples/iam-protobuf'
+import { getPermissionMessage, withAuthorization } from './utils'
 
 export async function createPermission(
   call: grpc.ServerUnaryCall<Permission, Permission>,
@@ -11,7 +11,7 @@ export async function createPermission(
 
     const created = await db.permission.create({
       data: {
-        client_id: request.clientId,
+        project_id: request.projectId,
         name: request.name,
         description: request.description
       }
@@ -24,3 +24,7 @@ export async function createPermission(
     cb(error)
   }
 }
+
+export default withAuthorization<Permission, Permission>(createPermission, {
+  scopes: ['permissions:write']
+})

@@ -1,5 +1,5 @@
 {
-  "name": "@xarples/iam-proto-loader",
+  "name": "@xarples/iam-protobuf",
   "version": "0.0.0",
   "description": "",
   "main": "dist/index.js",

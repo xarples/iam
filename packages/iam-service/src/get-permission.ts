@@ -1,6 +1,6 @@
 import * as db from '@xarples/iam-db'
-import { grpc, Permission } from '@xarples/iam-proto-loader'
-import { getPermissionMessage } from './utils'
+import { grpc, Permission } from '@xarples/iam-protobuf'
+import { getPermissionMessage, withAuthorization } from './utils'
 
 export async function getPermission(
   call: grpc.ServerUnaryCall<Permission, Permission>,
@@ -29,3 +29,7 @@ export async function getPermission(
     cb(error)
   }
 }
+
+export default withAuthorization<Permission, Permission>(getPermission, {
+  scopes: ['permissions:read']
+})

@@ -13,8 +13,8 @@ export class UserRole extends jspb.Message {
     setUserId(value: string): UserRole;
     getRoleId(): string;
     setRoleId(value: string): UserRole;
-    getClientId(): string;
-    setClientId(value: string): UserRole;
+    getProjectId(): string;
+    setProjectId(value: string): UserRole;
     getCreatedAt(): string;
     setCreatedAt(value: string): UserRole;
     getUpdatedAt(): string;
@@ -35,7 +35,7 @@ export namespace UserRole {
         id: string,
         userId: string,
         roleId: string,
-        clientId: string,
+        projectId: string,
         createdAt: string,
         updatedAt: string,
     }

@@ -3,6 +3,7 @@
 'use strict';
 var grpc = require('@grpc/grpc-js');
 var permission_pb = require('./permission_pb.js');
+var project_pb = require('./project_pb.js');
 var role_pb = require('./role_pb.js');
 var user$role_pb = require('./user-role_pb.js');
 
@@ -26,6 +27,28 @@ function serialize_permission_PermissionList(arg) {
 
 function deserialize_permission_PermissionList(buffer_arg) {
   return permission_pb.PermissionList.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_project_Project(arg) {
+  if (!(arg instanceof project_pb.Project)) {
+    throw new Error('Expected argument of type project.Project');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_project_Project(buffer_arg) {
+  return project_pb.Project.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_project_ProjectList(arg) {
+  if (!(arg instanceof project_pb.ProjectList)) {
+    throw new Error('Expected argument of type project.ProjectList');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_project_ProjectList(buffer_arg) {
+  return project_pb.ProjectList.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_role_Role(arg) {
@@ -128,6 +151,61 @@ var IAMService = exports.IAMService = {
     requestDeserialize: deserialize_permission_Permission,
     responseSerialize: serialize_permission_Permission,
     responseDeserialize: deserialize_permission_Permission,
+  },
+  createProject: {
+    path: '/auth.IAM/CreateProject',
+    requestStream: false,
+    responseStream: false,
+    requestType: project_pb.Project,
+    responseType: project_pb.Project,
+    requestSerialize: serialize_project_Project,
+    requestDeserialize: deserialize_project_Project,
+    responseSerialize: serialize_project_Project,
+    responseDeserialize: deserialize_project_Project,
+  },
+  getProject: {
+    path: '/auth.IAM/GetProject',
+    requestStream: false,
+    responseStream: false,
+    requestType: project_pb.Project,
+    responseType: project_pb.Project,
+    requestSerialize: serialize_project_Project,
+    requestDeserialize: deserialize_project_Project,
+    responseSerialize: serialize_project_Project,
+    responseDeserialize: deserialize_project_Project,
+  },
+  listProjects: {
+    path: '/auth.IAM/ListProjects',
+    requestStream: false,
+    responseStream: false,
+    requestType: project_pb.Project,
+    responseType: project_pb.ProjectList,
+    requestSerialize: serialize_project_Project,
+    requestDeserialize: deserialize_project_Project,
+    responseSerialize: serialize_project_ProjectList,
+    responseDeserialize: deserialize_project_ProjectList,
+  },
+  updateProject: {
+    path: '/auth.IAM/UpdateProject',
+    requestStream: false,
+    responseStream: false,
+    requestType: project_pb.Project,
+    responseType: project_pb.Project,
+    requestSerialize: serialize_project_Project,
+    requestDeserialize: deserialize_project_Project,
+    responseSerialize: serialize_project_Project,
+    responseDeserialize: deserialize_project_Project,
+  },
+  deleteProject: {
+    path: '/auth.IAM/DeleteProject',
+    requestStream: false,
+    responseStream: false,
+    requestType: project_pb.Project,
+    responseType: project_pb.Project,
+    requestSerialize: serialize_project_Project,
+    requestDeserialize: deserialize_project_Project,
+    responseSerialize: serialize_project_Project,
+    responseDeserialize: deserialize_project_Project,
   },
   createRole: {
     path: '/auth.IAM/CreateRole',

@@ -9,8 +9,8 @@ import * as jspb from "google-protobuf";
 export class Role extends jspb.Message { 
     getId(): string;
     setId(value: string): Role;
-    getClientId(): string;
-    setClientId(value: string): Role;
+    getProjectId(): string;
+    setProjectId(value: string): Role;
     getName(): string;
     setName(value: string): Role;
     getDescription(): string;
@@ -33,7 +33,7 @@ export class Role extends jspb.Message {
 export namespace Role {
     export type AsObject = {
         id: string,
-        clientId: string,
+        projectId: string,
         name: string,
         description: string,
         createdAt: string,

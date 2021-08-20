@@ -7,6 +7,7 @@
 import * as grpc from "@grpc/grpc-js";
 import * as service_pb from "./service_pb";
 import * as permission_pb from "./permission_pb";
+import * as project_pb from "./project_pb";
 import * as role_pb from "./role_pb";
 import * as user_role_pb from "./user-role_pb";
 
@@ -16,6 +17,11 @@ interface IIAMService extends grpc.ServiceDefinition<grpc.UntypedServiceImplemen
     listPermissions: IIAMService_IListPermissions;
     updatePermission: IIAMService_IUpdatePermission;
     deletePermission: IIAMService_IDeletePermission;
+    createProject: IIAMService_ICreateProject;
+    getProject: IIAMService_IGetProject;
+    listProjects: IIAMService_IListProjects;
+    updateProject: IIAMService_IUpdateProject;
+    deleteProject: IIAMService_IDeleteProject;
     createRole: IIAMService_ICreateRole;
     getRole: IIAMService_IGetRole;
     listRoles: IIAMService_IListRoles;
@@ -72,6 +78,51 @@ interface IIAMService_IDeletePermission extends grpc.MethodDefinition<permission
     requestDeserialize: grpc.deserialize<permission_pb.Permission>;
     responseSerialize: grpc.serialize<permission_pb.Permission>;
     responseDeserialize: grpc.deserialize<permission_pb.Permission>;
+}
+interface IIAMService_ICreateProject extends grpc.MethodDefinition<project_pb.Project, project_pb.Project> {
+    path: "/auth.IAM/CreateProject";
+    requestStream: false;
+    responseStream: false;
+    requestSerialize: grpc.serialize<project_pb.Project>;
+    requestDeserialize: grpc.deserialize<project_pb.Project>;
+    responseSerialize: grpc.serialize<project_pb.Project>;
+    responseDeserialize: grpc.deserialize<project_pb.Project>;
+}
+interface IIAMService_IGetProject extends grpc.MethodDefinition<project_pb.Project, project_pb.Project> {
+    path: "/auth.IAM/GetProject";
+    requestStream: false;
+    responseStream: false;
+    requestSerialize: grpc.serialize<project_pb.Project>;
+    requestDeserialize: grpc.deserialize<project_pb.Project>;
+    responseSerialize: grpc.serialize<project_pb.Project>;
+    responseDeserialize: grpc.deserialize<project_pb.Project>;
+}
+interface IIAMService_IListProjects extends grpc.MethodDefinition<project_pb.Project, project_pb.ProjectList> {
+    path: "/auth.IAM/ListProjects";
+    requestStream: false;
+    responseStream: false;
+    requestSerialize: grpc.serialize<project_pb.Project>;
+    requestDeserialize: grpc.deserialize<project_pb.Project>;
+    responseSerialize: grpc.serialize<project_pb.ProjectList>;
+    responseDeserialize: grpc.deserialize<project_pb.ProjectList>;
+}
+interface IIAMService_IUpdateProject extends grpc.MethodDefinition<project_pb.Project, project_pb.Project> {
+    path: "/auth.IAM/UpdateProject";
+    requestStream: false;
+    responseStream: false;
+    requestSerialize: grpc.serialize<project_pb.Project>;
+    requestDeserialize: grpc.deserialize<project_pb.Project>;
+    responseSerialize: grpc.serialize<project_pb.Project>;
+    responseDeserialize: grpc.deserialize<project_pb.Project>;
+}
+interface IIAMService_IDeleteProject extends grpc.MethodDefinition<project_pb.Project, project_pb.Project> {
+    path: "/auth.IAM/DeleteProject";
+    requestStream: false;
+    responseStream: false;
+    requestSerialize: grpc.serialize<project_pb.Project>;
+    requestDeserialize: grpc.deserialize<project_pb.Project>;
+    responseSerialize: grpc.serialize<project_pb.Project>;
+    responseDeserialize: grpc.deserialize<project_pb.Project>;
 }
 interface IIAMService_ICreateRole extends grpc.MethodDefinition<role_pb.Role, role_pb.Role> {
     path: "/auth.IAM/CreateRole";
@@ -172,6 +223,11 @@ export interface IIAMServer extends grpc.UntypedServiceImplementation {
     listPermissions: grpc.handleUnaryCall<permission_pb.Permission, permission_pb.PermissionList>;
     updatePermission: grpc.handleUnaryCall<permission_pb.Permission, permission_pb.Permission>;
     deletePermission: grpc.handleUnaryCall<permission_pb.Permission, permission_pb.Permission>;
+    createProject: grpc.handleUnaryCall<project_pb.Project, project_pb.Project>;
+    getProject: grpc.handleUnaryCall<project_pb.Project, project_pb.Project>;
+    listProjects: grpc.handleUnaryCall<project_pb.Project, project_pb.ProjectList>;
+    updateProject: grpc.handleUnaryCall<project_pb.Project, project_pb.Project>;
+    deleteProject: grpc.handleUnaryCall<project_pb.Project, project_pb.Project>;
     createRole: grpc.handleUnaryCall<role_pb.Role, role_pb.Role>;
     getRole: grpc.handleUnaryCall<role_pb.Role, role_pb.Role>;
     listRoles: grpc.handleUnaryCall<role_pb.Role, role_pb.RoleList>;
@@ -200,6 +256,21 @@ export interface IIAMClient {
     deletePermission(request: permission_pb.Permission, callback: (error: grpc.ServiceError | null, response: permission_pb.Permission) => void): grpc.ClientUnaryCall;
     deletePermission(request: permission_pb.Permission, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: permission_pb.Permission) => void): grpc.ClientUnaryCall;
     deletePermission(request: permission_pb.Permission, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: permission_pb.Permission) => void): grpc.ClientUnaryCall;
+    createProject(request: project_pb.Project, callback: (error: grpc.ServiceError | null, response: project_pb.Project) => void): grpc.ClientUnaryCall;
+    createProject(request: project_pb.Project, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: project_pb.Project) => void): grpc.ClientUnaryCall;
+    createProject(request: project_pb.Project, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: project_pb.Project) => void): grpc.ClientUnaryCall;
+    getProject(request: project_pb.Project, callback: (error: grpc.ServiceError | null, response: project_pb.Project) => void): grpc.ClientUnaryCall;
+    getProject(request: project_pb.Project, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: project_pb.Project) => void): grpc.ClientUnaryCall;
+    getProject(request: project_pb.Project, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: project_pb.Project) => void): grpc.ClientUnaryCall;
+    listProjects(request: project_pb.Project, callback: (error: grpc.ServiceError | null, response: project_pb.ProjectList) => void): grpc.ClientUnaryCall;
+    listProjects(request: project_pb.Project, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: project_pb.ProjectList) => void): grpc.ClientUnaryCall;
+    listProjects(request: project_pb.Project, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: project_pb.ProjectList) => void): grpc.ClientUnaryCall;
+    updateProject(request: project_pb.Project, callback: (error: grpc.ServiceError | null, response: project_pb.Project) => void): grpc.ClientUnaryCall;
+    updateProject(request: project_pb.Project, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: project_pb.Project) => void): grpc.ClientUnaryCall;
+    updateProject(request: project_pb.Project, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: project_pb.Project) => void): grpc.ClientUnaryCall;
+    deleteProject(request: project_pb.Project, callback: (error: grpc.ServiceError | null, response: project_pb.Project) => void): grpc.ClientUnaryCall;
+    deleteProject(request: project_pb.Project, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: project_pb.Project) => void): grpc.ClientUnaryCall;
+    deleteProject(request: project_pb.Project, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: project_pb.Project) => void): grpc.ClientUnaryCall;
     createRole(request: role_pb.Role, callback: (error: grpc.ServiceError | null, response: role_pb.Role) => void): grpc.ClientUnaryCall;
     createRole(request: role_pb.Role, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: role_pb.Role) => void): grpc.ClientUnaryCall;
     createRole(request: role_pb.Role, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: role_pb.Role) => void): grpc.ClientUnaryCall;
@@ -249,6 +320,21 @@ export class IAMClient extends grpc.Client implements IIAMClient {
     public deletePermission(request: permission_pb.Permission, callback: (error: grpc.ServiceError | null, response: permission_pb.Permission) => void): grpc.ClientUnaryCall;
     public deletePermission(request: permission_pb.Permission, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: permission_pb.Permission) => void): grpc.ClientUnaryCall;
     public deletePermission(request: permission_pb.Permission, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: permission_pb.Permission) => void): grpc.ClientUnaryCall;
+    public createProject(request: project_pb.Project, callback: (error: grpc.ServiceError | null, response: project_pb.Project) => void): grpc.ClientUnaryCall;
+    public createProject(request: project_pb.Project, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: project_pb.Project) => void): grpc.ClientUnaryCall;
+    public createProject(request: project_pb.Project, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: project_pb.Project) => void): grpc.ClientUnaryCall;
+    public getProject(request: project_pb.Project, callback: (error: grpc.ServiceError | null, response: project_pb.Project) => void): grpc.ClientUnaryCall;
+    public getProject(request: project_pb.Project, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: project_pb.Project) => void): grpc.ClientUnaryCall;
+    public getProject(request: project_pb.Project, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: project_pb.Project) => void): grpc.ClientUnaryCall;
+    public listProjects(request: project_pb.Project, callback: (error: grpc.ServiceError | null, response: project_pb.ProjectList) => void): grpc.ClientUnaryCall;
+    public listProjects(request: project_pb.Project, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: project_pb.ProjectList) => void): grpc.ClientUnaryCall;
+    public listProjects(request: project_pb.Project, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: project_pb.ProjectList) => void): grpc.ClientUnaryCall;
+    public updateProject(request: project_pb.Project, callback: (error: grpc.ServiceError | null, response: project_pb.Project) => void): grpc.ClientUnaryCall;
+    public updateProject(request: project_pb.Project, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: project_pb.Project) => void): grpc.ClientUnaryCall;
+    public updateProject(request: project_pb.Project, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: project_pb.Project) => void): grpc.ClientUnaryCall;
+    public deleteProject(request: project_pb.Project, callback: (error: grpc.ServiceError | null, response: project_pb.Project) => void): grpc.ClientUnaryCall;
+    public deleteProject(request: project_pb.Project, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: project_pb.Project) => void): grpc.ClientUnaryCall;
+    public deleteProject(request: project_pb.Project, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: project_pb.Project) => void): grpc.ClientUnaryCall;
     public createRole(request: role_pb.Role, callback: (error: grpc.ServiceError | null, response: role_pb.Role) => void): grpc.ClientUnaryCall;
     public createRole(request: role_pb.Role, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: role_pb.Role) => void): grpc.ClientUnaryCall;
     public createRole(request: role_pb.Role, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: role_pb.Role) => void): grpc.ClientUnaryCall;

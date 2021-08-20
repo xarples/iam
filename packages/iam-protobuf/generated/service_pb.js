@@ -17,6 +17,8 @@ var global = Function('return this')();
 
 var permission_pb = require('./permission_pb.js');
 goog.object.extend(proto, permission_pb);
+var project_pb = require('./project_pb.js');
+goog.object.extend(proto, project_pb);
 var role_pb = require('./role_pb.js');
 goog.object.extend(proto, role_pb);
 var user$role_pb = require('./user-role_pb.js');

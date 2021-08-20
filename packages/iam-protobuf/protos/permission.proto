@@ -4,9 +4,10 @@ package permission;
 
 message Permission {
   string id = 1;
-  string client_id = 5;
-  string name = 2;
-  string description = 3;
+  string role_id = 2;
+  string project_id = 3;
+  string name = 4;
+  string description = 5;
   string created_at = 6;
   string updated_at = 7;
 }

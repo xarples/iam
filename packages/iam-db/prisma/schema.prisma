@@ -11,41 +11,75 @@ generator client {
   previewFeatures = ["referentialActions"]
 }
 
-model UserRole {
-  id         String   @id @default(cuid())
-  user_id    String?
-  role_id    String?
-  client_id  String?
-  Role       Role?    @relation(fields: [role_id], references: [id])
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
+model Permission {
+  id          String   @id @default(cuid())
+  role_id     String?
+  project_id  String?
+  name        String
+  description String?
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
 
-  @@map(name: "user_roles")
+  Project Project? @relation(fields: [project_id], references: [id])
+  Roles   Role[]
+
+  @@map(name: "permissions")
+}
+
+model Project {
+  id          String   @id @default(cuid())
+  user_id     String?
+  name        String
+  description String?
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+
+  UserRoles    UserRole[]
+  Roles        Role[]
+  Permissions  Permission[]
+  UserProjects UserProject[]
+
+  @@map(name: "projects")
 }
 
 model Role {
-  id          String       @id @default(cuid())
-  user_id     String?
-  client_id   String?
+  id          String   @id @default(cuid())
+  project_id  String?
   name        String
   description String?
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+
+  Project     Project?     @relation(fields: [project_id], references: [id])
   Permissions Permission[]
   UserRoles   UserRole[]
-  created_at  DateTime     @default(now())
-  updated_at  DateTime     @updatedAt
+
 
   @@map(name: "roles")
 }
 
-model Permission {
-  id          String   @id @default(cuid())
-  role_id     String?
-  client_id   String?
-  name        String
-  description String?
-  Roles       Role[]
-  created_at  DateTime @default(now())
-  updated_at  DateTime @updatedAt
+model UserProject {
+  id         String   @id @default(cuid())
+  user_id    String?
+  project_id String?
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
 
-  @@map(name: "permissions")
+  Project Project? @relation(fields: [project_id], references: [id])
+
+  @@map(name: "user_projects")
+}
+
+model UserRole {
+  id         String   @id @default(cuid())
+  user_id    String?
+  role_id    String?
+  project_id String?
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  Project Project? @relation(fields: [project_id], references: [id])
+  Role    Role?    @relation(fields: [role_id], references: [id])
+
+  @@map(name: "user_roles")
 }

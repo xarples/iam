@@ -3,15 +3,22 @@ syntax = "proto3";
 package auth;
 
 import "permission.proto";
+import "project.proto";
 import "role.proto";
 import "user-role.proto";
 
-service IAM{
+service IAM {
   rpc CreatePermission(permission.Permission) returns (permission.Permission) {}
   rpc GetPermission(permission.Permission) returns (permission.Permission) {}
   rpc ListPermissions(permission.Permission) returns (permission.PermissionList) {}
   rpc UpdatePermission(permission.Permission) returns (permission.Permission) {}
   rpc DeletePermission(permission.Permission) returns (permission.Permission) {}
+
+  rpc CreateProject(project.Project) returns (project.Project) {}
+  rpc GetProject(project.Project) returns (project.Project) {}
+  rpc ListProjects(project.Project) returns (project.ProjectList) {}
+  rpc UpdateProject(project.Project) returns (project.Project) {}
+  rpc DeleteProject(project.Project) returns (project.Project) {}
 
   rpc CreateRole(role.Role) returns (role.Role) {}
   rpc GetRole(role.Role) returns (role.Role) {}

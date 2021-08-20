@@ -1,6 +1,6 @@
 import * as db from '@xarples/iam-db'
-import { grpc, Permission } from '@xarples/iam-proto-loader'
-import { getPermissionMessage } from './utils'
+import { grpc, Permission } from '@xarples/iam-protobuf'
+import { getPermissionMessage, withAuthorization } from './utils'
 
 export async function deletePermission(
   call: grpc.ServerUnaryCall<Permission, Permission>,
@@ -21,3 +21,7 @@ export async function deletePermission(
     cb(error)
   }
 }
+
+export default withAuthorization<Permission, Permission>(deletePermission, {
+  scopes: ['permissions:write']
+})

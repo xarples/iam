@@ -1,13 +1,12 @@
 import * as db from '@xarples/iam-db'
-import { grpc, Permission, PermissionList } from '@xarples/iam-proto-loader'
-import { getPermissionMessage } from './utils'
+import { grpc, Permission, PermissionList } from '@xarples/iam-protobuf'
+import { getPermissionMessage, withAuthorization } from './utils'
 
 export async function listPermissions(
   _: grpc.ServerUnaryCall<Permission, PermissionList>,
   cb: grpc.sendUnaryData<PermissionList>
 ) {
   try {
-    // const request = call.request.toObject()
     const list = await db.permission.findMany()
     const message = new PermissionList()
 
@@ -18,3 +17,7 @@ export async function listPermissions(
     cb(error)
   }
 }
+
+export default withAuthorization<Permission, PermissionList>(listPermissions, {
+  scopes: ['permissions:read']
+})

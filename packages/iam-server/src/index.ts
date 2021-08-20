@@ -1,4 +1,4 @@
-import { IAMService, grpc } from '@xarples/iam-proto-loader'
+import { IAMService, grpc } from '@xarples/iam-protobuf'
 import * as service from '@xarples/iam-service'
 
 const host = process.env.HOST || '127.0.0.1'
