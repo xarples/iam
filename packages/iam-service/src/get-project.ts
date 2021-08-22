@@ -31,5 +31,5 @@ export async function getProject(
 }
 
 export default withAuthorization<Project, Project>(getProject, {
-  scopes: ['projects:read']
+  scopes: ['iam.projects:read']
 })

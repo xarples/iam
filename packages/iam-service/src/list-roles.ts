@@ -19,5 +19,5 @@ export async function listRoles(
 }
 
 export default withAuthorization<Role, RoleList>(listRoles, {
-  scopes: ['roles:read']
+  scopes: ['iam.roles:read']
 })

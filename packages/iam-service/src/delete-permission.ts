@@ -23,5 +23,5 @@ export async function deletePermission(
 }
 
 export default withAuthorization<Permission, Permission>(deletePermission, {
-  scopes: ['permissions:write']
+  scopes: ['iam.permissions:write']
 })

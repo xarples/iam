@@ -19,5 +19,5 @@ export async function listPermissions(
 }
 
 export default withAuthorization<Permission, PermissionList>(listPermissions, {
-  scopes: ['permissions:read']
+  scopes: ['iam.permissions:read']
 })

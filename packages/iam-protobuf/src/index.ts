@@ -10,6 +10,4 @@ export * from '../generated/service_grpc_pb'
 
 export * from '../generated/service_pb'
 
-export * from '../generated/user-project_pb'
-
-export * from '../generated/user-role_pb'
+export * from '../generated/user_pb'

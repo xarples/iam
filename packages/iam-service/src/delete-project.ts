@@ -23,5 +23,5 @@ export async function deleteProject(
 }
 
 export default withAuthorization<Project, Project>(deleteProject, {
-  scopes: ['projects:write']
+  scopes: ['iam.projects:write']
 })

@@ -27,5 +27,5 @@ export async function updatePermission(
 }
 
 export default withAuthorization<Permission, Permission>(updatePermission, {
-  scopes: ['permissions:write']
+  scopes: ['iam.permissions:write']
 })

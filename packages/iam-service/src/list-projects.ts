@@ -19,5 +19,5 @@ export async function listProjects(
 }
 
 export default withAuthorization<Project, ProjectList>(listProjects, {
-  scopes: ['projects:read']
+  scopes: ['iam.projects:read']
 })

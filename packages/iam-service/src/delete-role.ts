@@ -23,5 +23,5 @@ export async function deleteRole(
 }
 
 export default withAuthorization<Role, Role>(deleteRole, {
-  scopes: ['roles:write']
+  scopes: ['iam.roles:write']
 })

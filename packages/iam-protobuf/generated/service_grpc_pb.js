@@ -5,7 +5,7 @@ var grpc = require('@grpc/grpc-js');
 var permission_pb = require('./permission_pb.js');
 var project_pb = require('./project_pb.js');
 var role_pb = require('./role_pb.js');
-var user$role_pb = require('./user-role_pb.js');
+var user_pb = require('./user_pb.js');
 
 function serialize_permission_Permission(arg) {
   if (!(arg instanceof permission_pb.Permission)) {
@@ -73,26 +73,26 @@ function deserialize_role_RoleList(buffer_arg) {
   return role_pb.RoleList.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_user_role_UserRole(arg) {
-  if (!(arg instanceof user$role_pb.UserRole)) {
-    throw new Error('Expected argument of type user_role.UserRole');
+function serialize_user_User(arg) {
+  if (!(arg instanceof user_pb.User)) {
+    throw new Error('Expected argument of type user.User');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_user_role_UserRole(buffer_arg) {
-  return user$role_pb.UserRole.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_user_User(buffer_arg) {
+  return user_pb.User.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_user_role_UserRoleList(arg) {
-  if (!(arg instanceof user$role_pb.UserRoleList)) {
-    throw new Error('Expected argument of type user_role.UserRoleList');
+function serialize_user_UserList(arg) {
+  if (!(arg instanceof user_pb.UserList)) {
+    throw new Error('Expected argument of type user.UserList');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_user_role_UserRoleList(buffer_arg) {
-  return user$role_pb.UserRoleList.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_user_UserList(buffer_arg) {
+  return user_pb.UserList.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 
@@ -262,60 +262,60 @@ var IAMService = exports.IAMService = {
     responseSerialize: serialize_role_Role,
     responseDeserialize: deserialize_role_Role,
   },
-  createUserRole: {
-    path: '/auth.IAM/CreateUserRole',
+  createUser: {
+    path: '/auth.IAM/CreateUser',
     requestStream: false,
     responseStream: false,
-    requestType: user$role_pb.UserRole,
-    responseType: user$role_pb.UserRole,
-    requestSerialize: serialize_user_role_UserRole,
-    requestDeserialize: deserialize_user_role_UserRole,
-    responseSerialize: serialize_user_role_UserRole,
-    responseDeserialize: deserialize_user_role_UserRole,
+    requestType: user_pb.User,
+    responseType: user_pb.User,
+    requestSerialize: serialize_user_User,
+    requestDeserialize: deserialize_user_User,
+    responseSerialize: serialize_user_User,
+    responseDeserialize: deserialize_user_User,
   },
-  getUserRole: {
-    path: '/auth.IAM/GetUserRole',
+  getUser: {
+    path: '/auth.IAM/GetUser',
     requestStream: false,
     responseStream: false,
-    requestType: user$role_pb.UserRole,
-    responseType: user$role_pb.UserRole,
-    requestSerialize: serialize_user_role_UserRole,
-    requestDeserialize: deserialize_user_role_UserRole,
-    responseSerialize: serialize_user_role_UserRole,
-    responseDeserialize: deserialize_user_role_UserRole,
+    requestType: user_pb.User,
+    responseType: user_pb.User,
+    requestSerialize: serialize_user_User,
+    requestDeserialize: deserialize_user_User,
+    responseSerialize: serialize_user_User,
+    responseDeserialize: deserialize_user_User,
   },
-  listUserRoles: {
-    path: '/auth.IAM/ListUserRoles',
+  listUsers: {
+    path: '/auth.IAM/ListUsers',
     requestStream: false,
     responseStream: false,
-    requestType: user$role_pb.UserRole,
-    responseType: user$role_pb.UserRoleList,
-    requestSerialize: serialize_user_role_UserRole,
-    requestDeserialize: deserialize_user_role_UserRole,
-    responseSerialize: serialize_user_role_UserRoleList,
-    responseDeserialize: deserialize_user_role_UserRoleList,
+    requestType: user_pb.User,
+    responseType: user_pb.UserList,
+    requestSerialize: serialize_user_User,
+    requestDeserialize: deserialize_user_User,
+    responseSerialize: serialize_user_UserList,
+    responseDeserialize: deserialize_user_UserList,
   },
-  updateUserRole: {
-    path: '/auth.IAM/UpdateUserRole',
+  updateUser: {
+    path: '/auth.IAM/UpdateUser',
     requestStream: false,
     responseStream: false,
-    requestType: user$role_pb.UserRole,
-    responseType: user$role_pb.UserRole,
-    requestSerialize: serialize_user_role_UserRole,
-    requestDeserialize: deserialize_user_role_UserRole,
-    responseSerialize: serialize_user_role_UserRole,
-    responseDeserialize: deserialize_user_role_UserRole,
+    requestType: user_pb.User,
+    responseType: user_pb.User,
+    requestSerialize: serialize_user_User,
+    requestDeserialize: deserialize_user_User,
+    responseSerialize: serialize_user_User,
+    responseDeserialize: deserialize_user_User,
   },
-  deleteUserRole: {
-    path: '/auth.IAM/DeleteUserRole',
+  deleteUser: {
+    path: '/auth.IAM/DeleteUser',
     requestStream: false,
     responseStream: false,
-    requestType: user$role_pb.UserRole,
-    responseType: user$role_pb.UserRole,
-    requestSerialize: serialize_user_role_UserRole,
-    requestDeserialize: deserialize_user_role_UserRole,
-    responseSerialize: serialize_user_role_UserRole,
-    responseDeserialize: deserialize_user_role_UserRole,
+    requestType: user_pb.User,
+    responseType: user_pb.User,
+    requestSerialize: serialize_user_User,
+    requestDeserialize: deserialize_user_User,
+    responseSerialize: serialize_user_User,
+    responseDeserialize: deserialize_user_User,
   },
 };
 

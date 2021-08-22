@@ -26,5 +26,5 @@ export async function createRole(
 }
 
 export default withAuthorization<Role, Role>(createRole, {
-  scopes: ['roles:write']
+  scopes: ['iam.roles:write']
 })

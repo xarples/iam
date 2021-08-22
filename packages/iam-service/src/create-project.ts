@@ -26,5 +26,5 @@ export async function createProject(
 }
 
 export default withAuthorization<Project, Project>(createProject, {
-  scopes: ['projects:write']
+  scopes: ['iam.projects:write']
 })

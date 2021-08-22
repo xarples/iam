@@ -21,5 +21,5 @@ var project_pb = require('./project_pb.js');
 goog.object.extend(proto, project_pb);
 var role_pb = require('./role_pb.js');
 goog.object.extend(proto, role_pb);
-var user$role_pb = require('./user-role_pb.js');
-goog.object.extend(proto, user$role_pb);
+var user_pb = require('./user_pb.js');
+goog.object.extend(proto, user_pb);

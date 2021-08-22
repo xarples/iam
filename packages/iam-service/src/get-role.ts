@@ -31,5 +31,5 @@ export async function getRole(
 }
 
 export default withAuthorization<Role, Role>(getRole, {
-  scopes: ['roles:read']
+  scopes: ['iam.roles:read']
 })

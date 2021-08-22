@@ -27,5 +27,5 @@ export async function updateProject(
 }
 
 export default withAuthorization<Project, Project>(updateProject, {
-  scopes: ['projects:write']
+  scopes: ['iam.projects:write']
 })

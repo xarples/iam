@@ -9,7 +9,7 @@ import * as service_pb from "./service_pb";
 import * as permission_pb from "./permission_pb";
 import * as project_pb from "./project_pb";
 import * as role_pb from "./role_pb";
-import * as user_role_pb from "./user-role_pb";
+import * as user_pb from "./user_pb";
 
 interface IIAMService extends grpc.ServiceDefinition<grpc.UntypedServiceImplementation> {
     createPermission: IIAMService_ICreatePermission;
@@ -27,11 +27,11 @@ interface IIAMService extends grpc.ServiceDefinition<grpc.UntypedServiceImplemen
     listRoles: IIAMService_IListRoles;
     updateRole: IIAMService_IUpdateRole;
     deleteRole: IIAMService_IDeleteRole;
-    createUserRole: IIAMService_ICreateUserRole;
-    getUserRole: IIAMService_IGetUserRole;
-    listUserRoles: IIAMService_IListUserRoles;
-    updateUserRole: IIAMService_IUpdateUserRole;
-    deleteUserRole: IIAMService_IDeleteUserRole;
+    createUser: IIAMService_ICreateUser;
+    getUser: IIAMService_IGetUser;
+    listUsers: IIAMService_IListUsers;
+    updateUser: IIAMService_IUpdateUser;
+    deleteUser: IIAMService_IDeleteUser;
 }
 
 interface IIAMService_ICreatePermission extends grpc.MethodDefinition<permission_pb.Permission, permission_pb.Permission> {
@@ -169,50 +169,50 @@ interface IIAMService_IDeleteRole extends grpc.MethodDefinition<role_pb.Role, ro
     responseSerialize: grpc.serialize<role_pb.Role>;
     responseDeserialize: grpc.deserialize<role_pb.Role>;
 }
-interface IIAMService_ICreateUserRole extends grpc.MethodDefinition<user_role_pb.UserRole, user_role_pb.UserRole> {
-    path: "/auth.IAM/CreateUserRole";
+interface IIAMService_ICreateUser extends grpc.MethodDefinition<user_pb.User, user_pb.User> {
+    path: "/auth.IAM/CreateUser";
     requestStream: false;
     responseStream: false;
-    requestSerialize: grpc.serialize<user_role_pb.UserRole>;
-    requestDeserialize: grpc.deserialize<user_role_pb.UserRole>;
-    responseSerialize: grpc.serialize<user_role_pb.UserRole>;
-    responseDeserialize: grpc.deserialize<user_role_pb.UserRole>;
+    requestSerialize: grpc.serialize<user_pb.User>;
+    requestDeserialize: grpc.deserialize<user_pb.User>;
+    responseSerialize: grpc.serialize<user_pb.User>;
+    responseDeserialize: grpc.deserialize<user_pb.User>;
 }
-interface IIAMService_IGetUserRole extends grpc.MethodDefinition<user_role_pb.UserRole, user_role_pb.UserRole> {
-    path: "/auth.IAM/GetUserRole";
+interface IIAMService_IGetUser extends grpc.MethodDefinition<user_pb.User, user_pb.User> {
+    path: "/auth.IAM/GetUser";
     requestStream: false;
     responseStream: false;
-    requestSerialize: grpc.serialize<user_role_pb.UserRole>;
-    requestDeserialize: grpc.deserialize<user_role_pb.UserRole>;
-    responseSerialize: grpc.serialize<user_role_pb.UserRole>;
-    responseDeserialize: grpc.deserialize<user_role_pb.UserRole>;
+    requestSerialize: grpc.serialize<user_pb.User>;
+    requestDeserialize: grpc.deserialize<user_pb.User>;
+    responseSerialize: grpc.serialize<user_pb.User>;
+    responseDeserialize: grpc.deserialize<user_pb.User>;
 }
-interface IIAMService_IListUserRoles extends grpc.MethodDefinition<user_role_pb.UserRole, user_role_pb.UserRoleList> {
-    path: "/auth.IAM/ListUserRoles";
+interface IIAMService_IListUsers extends grpc.MethodDefinition<user_pb.User, user_pb.UserList> {
+    path: "/auth.IAM/ListUsers";
     requestStream: false;
     responseStream: false;
-    requestSerialize: grpc.serialize<user_role_pb.UserRole>;
-    requestDeserialize: grpc.deserialize<user_role_pb.UserRole>;
-    responseSerialize: grpc.serialize<user_role_pb.UserRoleList>;
-    responseDeserialize: grpc.deserialize<user_role_pb.UserRoleList>;
+    requestSerialize: grpc.serialize<user_pb.User>;
+    requestDeserialize: grpc.deserialize<user_pb.User>;
+    responseSerialize: grpc.serialize<user_pb.UserList>;
+    responseDeserialize: grpc.deserialize<user_pb.UserList>;
 }
-interface IIAMService_IUpdateUserRole extends grpc.MethodDefinition<user_role_pb.UserRole, user_role_pb.UserRole> {
-    path: "/auth.IAM/UpdateUserRole";
+interface IIAMService_IUpdateUser extends grpc.MethodDefinition<user_pb.User, user_pb.User> {
+    path: "/auth.IAM/UpdateUser";
     requestStream: false;
     responseStream: false;
-    requestSerialize: grpc.serialize<user_role_pb.UserRole>;
-    requestDeserialize: grpc.deserialize<user_role_pb.UserRole>;
-    responseSerialize: grpc.serialize<user_role_pb.UserRole>;
-    responseDeserialize: grpc.deserialize<user_role_pb.UserRole>;
+    requestSerialize: grpc.serialize<user_pb.User>;
+    requestDeserialize: grpc.deserialize<user_pb.User>;
+    responseSerialize: grpc.serialize<user_pb.User>;
+    responseDeserialize: grpc.deserialize<user_pb.User>;
 }
-interface IIAMService_IDeleteUserRole extends grpc.MethodDefinition<user_role_pb.UserRole, user_role_pb.UserRole> {
-    path: "/auth.IAM/DeleteUserRole";
+interface IIAMService_IDeleteUser extends grpc.MethodDefinition<user_pb.User, user_pb.User> {
+    path: "/auth.IAM/DeleteUser";
     requestStream: false;
     responseStream: false;
-    requestSerialize: grpc.serialize<user_role_pb.UserRole>;
-    requestDeserialize: grpc.deserialize<user_role_pb.UserRole>;
-    responseSerialize: grpc.serialize<user_role_pb.UserRole>;
-    responseDeserialize: grpc.deserialize<user_role_pb.UserRole>;
+    requestSerialize: grpc.serialize<user_pb.User>;
+    requestDeserialize: grpc.deserialize<user_pb.User>;
+    responseSerialize: grpc.serialize<user_pb.User>;
+    responseDeserialize: grpc.deserialize<user_pb.User>;
 }
 
 export const IAMService: IIAMService;
@@ -233,11 +233,11 @@ export interface IIAMServer extends grpc.UntypedServiceImplementation {
     listRoles: grpc.handleUnaryCall<role_pb.Role, role_pb.RoleList>;
     updateRole: grpc.handleUnaryCall<role_pb.Role, role_pb.Role>;
     deleteRole: grpc.handleUnaryCall<role_pb.Role, role_pb.Role>;
-    createUserRole: grpc.handleUnaryCall<user_role_pb.UserRole, user_role_pb.UserRole>;
-    getUserRole: grpc.handleUnaryCall<user_role_pb.UserRole, user_role_pb.UserRole>;
-    listUserRoles: grpc.handleUnaryCall<user_role_pb.UserRole, user_role_pb.UserRoleList>;
-    updateUserRole: grpc.handleUnaryCall<user_role_pb.UserRole, user_role_pb.UserRole>;
-    deleteUserRole: grpc.handleUnaryCall<user_role_pb.UserRole, user_role_pb.UserRole>;
+    createUser: grpc.handleUnaryCall<user_pb.User, user_pb.User>;
+    getUser: grpc.handleUnaryCall<user_pb.User, user_pb.User>;
+    listUsers: grpc.handleUnaryCall<user_pb.User, user_pb.UserList>;
+    updateUser: grpc.handleUnaryCall<user_pb.User, user_pb.User>;
+    deleteUser: grpc.handleUnaryCall<user_pb.User, user_pb.User>;
 }
 
 export interface IIAMClient {
@@ -286,21 +286,21 @@ export interface IIAMClient {
     deleteRole(request: role_pb.Role, callback: (error: grpc.ServiceError | null, response: role_pb.Role) => void): grpc.ClientUnaryCall;
     deleteRole(request: role_pb.Role, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: role_pb.Role) => void): grpc.ClientUnaryCall;
     deleteRole(request: role_pb.Role, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: role_pb.Role) => void): grpc.ClientUnaryCall;
-    createUserRole(request: user_role_pb.UserRole, callback: (error: grpc.ServiceError | null, response: user_role_pb.UserRole) => void): grpc.ClientUnaryCall;
-    createUserRole(request: user_role_pb.UserRole, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: user_role_pb.UserRole) => void): grpc.ClientUnaryCall;
-    createUserRole(request: user_role_pb.UserRole, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: user_role_pb.UserRole) => void): grpc.ClientUnaryCall;
-    getUserRole(request: user_role_pb.UserRole, callback: (error: grpc.ServiceError | null, response: user_role_pb.UserRole) => void): grpc.ClientUnaryCall;
-    getUserRole(request: user_role_pb.UserRole, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: user_role_pb.UserRole) => void): grpc.ClientUnaryCall;
-    getUserRole(request: user_role_pb.UserRole, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: user_role_pb.UserRole) => void): grpc.ClientUnaryCall;
-    listUserRoles(request: user_role_pb.UserRole, callback: (error: grpc.ServiceError | null, response: user_role_pb.UserRoleList) => void): grpc.ClientUnaryCall;
-    listUserRoles(request: user_role_pb.UserRole, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: user_role_pb.UserRoleList) => void): grpc.ClientUnaryCall;
-    listUserRoles(request: user_role_pb.UserRole, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: user_role_pb.UserRoleList) => void): grpc.ClientUnaryCall;
-    updateUserRole(request: user_role_pb.UserRole, callback: (error: grpc.ServiceError | null, response: user_role_pb.UserRole) => void): grpc.ClientUnaryCall;
-    updateUserRole(request: user_role_pb.UserRole, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: user_role_pb.UserRole) => void): grpc.ClientUnaryCall;
-    updateUserRole(request: user_role_pb.UserRole, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: user_role_pb.UserRole) => void): grpc.ClientUnaryCall;
-    deleteUserRole(request: user_role_pb.UserRole, callback: (error: grpc.ServiceError | null, response: user_role_pb.UserRole) => void): grpc.ClientUnaryCall;
-    deleteUserRole(request: user_role_pb.UserRole, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: user_role_pb.UserRole) => void): grpc.ClientUnaryCall;
-    deleteUserRole(request: user_role_pb.UserRole, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: user_role_pb.UserRole) => void): grpc.ClientUnaryCall;
+    createUser(request: user_pb.User, callback: (error: grpc.ServiceError | null, response: user_pb.User) => void): grpc.ClientUnaryCall;
+    createUser(request: user_pb.User, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: user_pb.User) => void): grpc.ClientUnaryCall;
+    createUser(request: user_pb.User, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: user_pb.User) => void): grpc.ClientUnaryCall;
+    getUser(request: user_pb.User, callback: (error: grpc.ServiceError | null, response: user_pb.User) => void): grpc.ClientUnaryCall;
+    getUser(request: user_pb.User, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: user_pb.User) => void): grpc.ClientUnaryCall;
+    getUser(request: user_pb.User, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: user_pb.User) => void): grpc.ClientUnaryCall;
+    listUsers(request: user_pb.User, callback: (error: grpc.ServiceError | null, response: user_pb.UserList) => void): grpc.ClientUnaryCall;
+    listUsers(request: user_pb.User, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: user_pb.UserList) => void): grpc.ClientUnaryCall;
+    listUsers(request: user_pb.User, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: user_pb.UserList) => void): grpc.ClientUnaryCall;
+    updateUser(request: user_pb.User, callback: (error: grpc.ServiceError | null, response: user_pb.User) => void): grpc.ClientUnaryCall;
+    updateUser(request: user_pb.User, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: user_pb.User) => void): grpc.ClientUnaryCall;
+    updateUser(request: user_pb.User, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: user_pb.User) => void): grpc.ClientUnaryCall;
+    deleteUser(request: user_pb.User, callback: (error: grpc.ServiceError | null, response: user_pb.User) => void): grpc.ClientUnaryCall;
+    deleteUser(request: user_pb.User, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: user_pb.User) => void): grpc.ClientUnaryCall;
+    deleteUser(request: user_pb.User, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: user_pb.User) => void): grpc.ClientUnaryCall;
 }
 
 export class IAMClient extends grpc.Client implements IIAMClient {
@@ -350,19 +350,19 @@ export class IAMClient extends grpc.Client implements IIAMClient {
     public deleteRole(request: role_pb.Role, callback: (error: grpc.ServiceError | null, response: role_pb.Role) => void): grpc.ClientUnaryCall;
     public deleteRole(request: role_pb.Role, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: role_pb.Role) => void): grpc.ClientUnaryCall;
     public deleteRole(request: role_pb.Role, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: role_pb.Role) => void): grpc.ClientUnaryCall;
-    public createUserRole(request: user_role_pb.UserRole, callback: (error: grpc.ServiceError | null, response: user_role_pb.UserRole) => void): grpc.ClientUnaryCall;
-    public createUserRole(request: user_role_pb.UserRole, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: user_role_pb.UserRole) => void): grpc.ClientUnaryCall;
-    public createUserRole(request: user_role_pb.UserRole, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: user_role_pb.UserRole) => void): grpc.ClientUnaryCall;
-    public getUserRole(request: user_role_pb.UserRole, callback: (error: grpc.ServiceError | null, response: user_role_pb.UserRole) => void): grpc.ClientUnaryCall;
-    public getUserRole(request: user_role_pb.UserRole, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: user_role_pb.UserRole) => void): grpc.ClientUnaryCall;
-    public getUserRole(request: user_role_pb.UserRole, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: user_role_pb.UserRole) => void): grpc.ClientUnaryCall;
-    public listUserRoles(request: user_role_pb.UserRole, callback: (error: grpc.ServiceError | null, response: user_role_pb.UserRoleList) => void): grpc.ClientUnaryCall;
-    public listUserRoles(request: user_role_pb.UserRole, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: user_role_pb.UserRoleList) => void): grpc.ClientUnaryCall;
-    public listUserRoles(request: user_role_pb.UserRole, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: user_role_pb.UserRoleList) => void): grpc.ClientUnaryCall;
-    public updateUserRole(request: user_role_pb.UserRole, callback: (error: grpc.ServiceError | null, response: user_role_pb.UserRole) => void): grpc.ClientUnaryCall;
-    public updateUserRole(request: user_role_pb.UserRole, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: user_role_pb.UserRole) => void): grpc.ClientUnaryCall;
-    public updateUserRole(request: user_role_pb.UserRole, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: user_role_pb.UserRole) => void): grpc.ClientUnaryCall;
-    public deleteUserRole(request: user_role_pb.UserRole, callback: (error: grpc.ServiceError | null, response: user_role_pb.UserRole) => void): grpc.ClientUnaryCall;
-    public deleteUserRole(request: user_role_pb.UserRole, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: user_role_pb.UserRole) => void): grpc.ClientUnaryCall;
-    public deleteUserRole(request: user_role_pb.UserRole, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: user_role_pb.UserRole) => void): grpc.ClientUnaryCall;
+    public createUser(request: user_pb.User, callback: (error: grpc.ServiceError | null, response: user_pb.User) => void): grpc.ClientUnaryCall;
+    public createUser(request: user_pb.User, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: user_pb.User) => void): grpc.ClientUnaryCall;
+    public createUser(request: user_pb.User, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: user_pb.User) => void): grpc.ClientUnaryCall;
+    public getUser(request: user_pb.User, callback: (error: grpc.ServiceError | null, response: user_pb.User) => void): grpc.ClientUnaryCall;
+    public getUser(request: user_pb.User, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: user_pb.User) => void): grpc.ClientUnaryCall;
+    public getUser(request: user_pb.User, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: user_pb.User) => void): grpc.ClientUnaryCall;
+    public listUsers(request: user_pb.User, callback: (error: grpc.ServiceError | null, response: user_pb.UserList) => void): grpc.ClientUnaryCall;
+    public listUsers(request: user_pb.User, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: user_pb.UserList) => void): grpc.ClientUnaryCall;
+    public listUsers(request: user_pb.User, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: user_pb.UserList) => void): grpc.ClientUnaryCall;
+    public updateUser(request: user_pb.User, callback: (error: grpc.ServiceError | null, response: user_pb.User) => void): grpc.ClientUnaryCall;
+    public updateUser(request: user_pb.User, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: user_pb.User) => void): grpc.ClientUnaryCall;
+    public updateUser(request: user_pb.User, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: user_pb.User) => void): grpc.ClientUnaryCall;
+    public deleteUser(request: user_pb.User, callback: (error: grpc.ServiceError | null, response: user_pb.User) => void): grpc.ClientUnaryCall;
+    public deleteUser(request: user_pb.User, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: user_pb.User) => void): grpc.ClientUnaryCall;
+    public deleteUser(request: user_pb.User, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: user_pb.User) => void): grpc.ClientUnaryCall;
 }
